@@ -1,0 +1,6 @@
+# cms
+django-cms>=3.0
+djangocms-admin-style==0.2.2
+django-filer==0.9.5
+cmsplugin-filer==0.9.5
+djangocms-text-ckeditor
