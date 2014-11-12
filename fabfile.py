@@ -179,10 +179,10 @@ def local_project_setup():
     enable_cms = 'False'
     deploy_on_heroku = 'False'
 
-    if confirm("Do you want to enable the CMS (y/n)?"):
+    if confirm("Do you want to enable the CMS (y/n)?", default=False):
         enable_cms = 'True'
 
-    if confirm("Will you deploy the app on Heroku (y/n)?"):
+    if confirm("Will you deploy the app on Heroku (y/n)?", default=False):
         enable_cms = 'True'
 
     db_name = prompt(u"PostreSQL DB name for the local db? (It will be created if doesn't exist)", validate=r'^\w+$')
@@ -204,8 +204,7 @@ def local_project_setup():
         [random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)') for i in range(50)])
 
     list_files_to_update = ['etc/gunicorn.sh', 'etc/nginx.conf', 'etc/supervisor.conf',
-                            'website/settings/base.py', 'website/settings/dev.py', 'website/settings/production.py',
-                            'Vagrantfile']
+                            'website/settings/base.py', 'website/settings/dev.py', 'website/settings/production.py',]
 
     dict_var_to_update = {'%%PRJ_NAME%%': PRJ_NAME,
                           '%%PRJ_ENABLE_CMS%%': enable_cms,
