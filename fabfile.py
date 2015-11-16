@@ -183,7 +183,7 @@ def local_project_setup():
         enable_cms = 'True'
 
     if confirm("Will you deploy the app on Heroku (y/n)?", default=False):
-        enable_cms = 'True'
+        deploy_on_heroku = 'True'
 
     db_name = prompt(u"PostreSQL DB name for the local db? (It will be created if doesn't exist)", validate=r'^\w+$')
     db_user = prompt(u"PostgreSQL username for the local db? (It will be created if doesn't exist)", validate=r'^\w+$')
@@ -245,9 +245,9 @@ def local_project_setup():
             print "Database %s already exists ...." % db_name
 
     local("pip install -r requirements/base.txt")
-    if enable_cms:
+    if enable_cms == 'True':
         local("pip install -r requirements/cms.txt")
-    if deploy_on_heroku:
+    if deploy_on_heroku == 'True':
         local("pip install -r requirements/heroku.txt")
 
     local("python manage.py syncdb --all")
